@@ -1,0 +1,15 @@
+{
+  "name": "iotcontrollerserver",
+  "version": "1.0.0",
+  "description": "Control hardware by this server from client to iot client devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "amirulasri",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.6.1"
+  }
+}
