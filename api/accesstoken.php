@@ -108,7 +108,7 @@ function getUsername($conn, $token, $publicKey)
         $decoded = JWT::decode($token, new Key($publicKey, 'RS256'));
         $arraydatauser = (array) $decoded;
         if (($arraydatauser["iat"] <= time() && $arraydatauser["exp"] >= time())) {
-            $userdbsqlstmt = $conn->prepare("SELECT `username` FROM `scheduleraccount` WHERE `username` = ?");
+            $userdbsqlstmt = $conn->prepare("SELECT `username` FROM `users` WHERE `username` = ?");
             $userdbsqlstmt->bind_param("s", $arraydatauser["data"]->username);
             $userdbsqlstmt->execute();
             $userdbsqlstmt->store_result();

@@ -7,7 +7,7 @@ const io = new Server(httpServer, {
     origin: "*"
   }
 });
-
+console.log("Server started");
 io.on("connection", (socket) => {
   console.log("New client connected: " + socket.id);
 
@@ -29,6 +29,9 @@ io.on("connection", (socket) => {
   //USED TO RECEIVE AND SEND BACK FROM IOT CONTROL TO REMOTE CLIENT
   socket.on("sendlistgpiotouser", (arg) => {
     socket.to(arg.emailaccount).emit("receivelistgpio", arg);
+  });
+  socket.on("sendreceiverdetailtouser", (arg) => {
+    socket.to(arg.emailaccount).emit("receivereceiverdetails", arg);
   });
 
   //JOIN ROOM FOR SPECIFIED USERS
